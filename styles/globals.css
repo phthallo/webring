@@ -2,15 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+@font-face {
+  font-family: "DMMono";
+  src: url("/public/DM_Mono/DMMono-Regular.ttf") format("truetype");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  @font-face {
+        font-family: "DMMono";
+        src: url("/public/DM_Mono/DMMono-Regular.ttf") format("truetype");
   }
 }
 
@@ -18,4 +19,10 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  p, div, span {
+    @apply font-dmmono text-white
+  }
 }
