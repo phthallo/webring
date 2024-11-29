@@ -13,16 +13,16 @@ export default async function handler(
 
   const file = await fs.readFile(process.cwd() + '/public/members.json', 'utf8');
   const fileData = JSON.parse(file);
-  let { member, style, type }  = req.query;
+  let { member, style, format }  = req.query;
   let length = Object.keys(fileData).length;
   let mem = Number(member);
   let values = [getVal(mem-1, length), getVal(mem, length), getVal(mem+1, length)]
   if (!style){ style = "" };
   let output = "";
   for (let i=0; i<3; i++){
-    if (type == "image"){
+    if (format == "image"){
       output +=  `<a href = "${fileData[values[0]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[i]]['img']} alt = ${fileData[values[i]]['description']}/></a>`
-    } else if (type == "text"){
+    } else if (format == "text"){
         output += `<a href = "${fileData[values[i]]['website']}">${fileData[values[i]]['name']}</a>`
     }
     if (i == 0){
@@ -34,6 +34,7 @@ export default async function handler(
   }  
   const data =  `
   <div style = "${style}">
+    <p>part of the placeholder webring!</p>
     ${output}
   </div>`
 
