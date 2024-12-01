@@ -1,9 +1,8 @@
 import Layout from "../components/Layout";
-
 const Docs = () =>{
     return (
         <Layout>
-            <h1 className="text-2xl">api documentation</h1>
+            <h1>api documentation</h1>
             <p className = "bg-black/50 h-max">GET /api/members</p>
             <p>Returns a JSON object containing every member of the webring, in the following format:</p>
             <p className = "pl-4">
@@ -32,8 +31,8 @@ const Docs = () =>{
             <p className = "bg-black/50 h-max">GET /api/widgets/[:member]?format=[:format]&style=[:style]</p>
             <p>Returns HTML for a webring navigation widget where:</p>
             <ul>
-                <li className = "list-disc list-inside">format (required) is one of <b>text</b> (names) or <b>image</b> (88x31 images)</li>
-                <li className = "list-disc list-inside">style (optional) contains inline styles to style the returned elements</li>
+                <li>format (required) is one of <b>text</b> (names) or <b>image</b> (88x31 images)</li>
+                <li>style (optional) contains inline styles to style the returned elements</li>
             </ul>
             <p>Each widget links to the previous member, the current member and the next member in the selected format.</p>
         </Layout>

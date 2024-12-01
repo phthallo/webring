@@ -22,7 +22,31 @@ body {
 }
 
 @layer components {
+  html {
+    @apply bg-background
+  }
+
   p, div, span {
     @apply font-dmmono text-white
+  }
+
+  h1 {
+    @apply text-xl pb-6
+  }
+
+  a {
+    @apply text-gray-50 hover:text-blue-400
+  }
+
+  i {
+    @apply px-2
+  }
+
+  li {
+    @apply list-disc list-inside
+  }
+
+  p {
+    @apply mb-2
   }
 }

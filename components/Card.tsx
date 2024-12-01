@@ -2,15 +2,19 @@
 export interface CardProps {
     name: String,
     description: String
+    website: String
     img: String
 }
 
-const Card = ({name, description, img}: CardProps) => 
+const Card = ({name, description, website, img}: CardProps) => 
     (
-        <div className = "bg-black/25 m-4 p-4 h-max rounded-md">
-            <img className = "mx-auto" src = {`${img}`}></img>
-            <p className = "font-bold text-center">{name}</p>        
-            <p className = "text-center text-sm">{description}</p>
+        <div className="my-6">
+            <a href = {`${website}`}><img className="inline mr-4" src = {`${img}`}></img></a>
+            <span className = "font-bold">
+                {name} • <a href = {`${website}`}>{website}</a>
+            </span>
+
+            <p className = "text-sm">{description}</p>
         </div>
     );
 

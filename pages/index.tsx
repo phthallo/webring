@@ -2,25 +2,25 @@ import Card, { CardProps } from "../components/Card";
 import Layout from "../components/Layout";
 
 
-const Home: React.FC<CardProps[]> = (posts) => {
+const Home: React.FC<CardProps[]> = (members) => {
   return (
         <Layout>
-          <div className = "md:grid md:grid-cols-3">
-            {Object.values(posts).map((prop) => (
+            <h1>webring members</h1>
+            {Object.values(members).map((prop) => (
               <Card 
                 name = {prop.name} 
                 description = {prop.description}
+                website = {prop.website}
                 img = {prop.img} />
             ))}
-          </div>
         </Layout>
   );
 }
 
 export const getStaticProps = async () => {
-  const posts = await fetch(`${process.env.BASE_URL}/api/members`)
+  const members = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/members`)
     .then(r => r.json())
-  return { props: { ...posts } }
+  return { props: { ...members } }
 }
 
 export default Home
