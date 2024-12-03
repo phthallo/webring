@@ -18,7 +18,7 @@ export default async function handler(
   let mem = Number(member);
   let values = [getVal(mem-1, length), getVal(mem, length), getVal(mem+1, length)] // get values circular-ly
   if (!style){ style = "" };
-  let output = [`<a href = "${process.env.NEXT_PUBLIC_BASE_URL}">placeholder</a>`];
+  let output = [`<a href = "${process.env.BASE_URL}">placeholder</a>`];
 
   if (format == "image"){
     output.unshift(`<a href = "${fileData[values[0]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[0]]['img']} alt = ${fileData[values[0]]['description']}/></a> ← `)
