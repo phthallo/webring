@@ -4,7 +4,7 @@ import { loadMembers } from "../lib/load-members";
 
 const Home: React.FC<CardProps[]> = (members) => {
   return (
-        <Layout title = "webring members">
+        <Layout heading = "webring members" title="home">
             {Object.values(members).map((prop) => (
               <Card 
                 name = {prop.name} 

@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 const Docs = () =>{
     return (
-        <Layout title = "api documentation">
+        <Layout heading = "api documentation" title = "api docs">
             <p className = "bg-black/50 h-max">GET /api/members</p>
             <p>Returns a JSON object containing every member of the webring, in the following format:</p>
             <p className = "pl-4">
@@ -16,15 +16,11 @@ const Docs = () =>{
                 <p className = "bg-black/50 h-max">GET /api/members/[:member]</p>
             <p>Returns a JSON object containing the information of one member of the webring, where [:member] is an integer.</p>
             <p className = "pl-4">
-                &#123;"id": <br/></p>
-                <p className = "pl-8">
                 &#123;"name": Name of the user,<br/>
                 "website": Link to the website,<br/>
                 "description": Short description of the user,<br/>
                 "img": Base-64 encoded 88x31 image.&#125;<br/>
                 &#125;</p>
-
-            
 
             <p className = "bg-black/50 h-max">GET /api/widgets/[:member]?format=[:format]&style=[:style]</p>
             <p>Returns HTML for a webring navigation widget where:</p>

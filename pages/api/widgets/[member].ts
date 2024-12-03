@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse<String>,
   ) {
 
-  const file = await fs.readFile(process.cwd() + '/public/members.json', 'utf8');
+  const file = await fs.readFile(process.cwd() + '/lib/members.json', 'utf8');
   const fileData = JSON.parse(file);
   let { member, style, format }  = req.query;
   let length = Object.keys(fileData).length;
