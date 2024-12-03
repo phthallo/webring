@@ -16,9 +16,9 @@ const Home: React.FC<CardProps[]> = (members) => {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const members = await loadMembers()
-  return {props: members}
+  return {props: {members}}
 }
 
 export default Home
