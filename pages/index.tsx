@@ -1,5 +1,6 @@
 import Card, { CardProps } from "../components/Card";
 import Layout from "../components/Layout";
+import { loadMembers } from "../lib/load-members";
 
 const Home: React.FC<CardProps[]> = (members) => {
   return (
@@ -16,9 +17,8 @@ const Home: React.FC<CardProps[]> = (members) => {
 }
 
 export const getStaticProps = async () => {
-  const members = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/members`)
-    .then(r => r.json())
-  return { props: { ...members } }
+  const members = await loadMembers()
+  return {props: members}
 }
 
 export default Home
