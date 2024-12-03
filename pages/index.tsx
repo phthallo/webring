@@ -1,11 +1,9 @@
 import Card, { CardProps } from "../components/Card";
 import Layout from "../components/Layout";
 
-
 const Home: React.FC<CardProps[]> = (members) => {
   return (
-        <Layout>
-            <h1>webring members</h1>
+        <Layout title = "webring members">
             {Object.values(members).map((prop) => (
               <Card 
                 name = {prop.name} 

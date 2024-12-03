@@ -5,37 +5,33 @@
 
 @font-face {
   font-family: "DMMono";
-  src: url("/public/DM_Mono/DMMono-Regular.ttf") format("truetype");
+  src: url("../public/DM_Mono/DMMono-Regular.ttf") format("truetype");
 }
 
 @layer base {
   @font-face {
         font-family: "DMMono";
-        src: url("/public/DM_Mono/DMMono-Regular.ttf") format("truetype");
+        src: url("../public/DM_Mono/DMMono-Regular.ttf") format("truetype");
   }
+  html {
+    @apply bg-background selection:bg-secondary selection:text-text
+  }
+
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 @layer components {
-  html {
-    @apply bg-background
-  }
 
   p, div, span {
-    @apply font-dmmono text-white
+    @apply font-dmmono text-text text-sm sm:text-base
   }
 
   h1 {
-    @apply text-xl pb-6
+    @apply text-lg sm:text-xl mb-6 text-white bg-secondary 
   }
 
   a {
-    @apply text-gray-50 hover:text-blue-400
+    @apply text-gray-50 hover:text-accent
   }
 
   i {
@@ -43,7 +39,7 @@ body {
   }
 
   li {
-    @apply list-disc list-inside
+    @apply list-disc list-inside 
   }
 
   p {

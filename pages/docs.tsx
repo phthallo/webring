@@ -1,8 +1,7 @@
 import Layout from "../components/Layout";
 const Docs = () =>{
     return (
-        <Layout>
-            <h1>api documentation</h1>
+        <Layout title = "api documentation">
             <p className = "bg-black/50 h-max">GET /api/members</p>
             <p>Returns a JSON object containing every member of the webring, in the following format:</p>
             <p className = "pl-4">

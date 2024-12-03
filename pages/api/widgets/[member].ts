@@ -16,28 +16,40 @@ export default async function handler(
   let { member, style, format }  = req.query;
   let length = Object.keys(fileData).length;
   let mem = Number(member);
-  let values = [getVal(mem-1, length), getVal(mem, length), getVal(mem+1, length)]
+  let values = [getVal(mem-1, length), getVal(mem, length), getVal(mem+1, length)] // get values circular-ly
   if (!style){ style = "" };
-  let output = "";
-  for (let i=0; i<3; i++){
-    if (format == "image"){
-      output +=  `<a href = "${fileData[values[0]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[i]]['img']} alt = ${fileData[values[i]]['description']}/></a>`
-    } else if (format == "text"){
-        output += `<a href = "${fileData[values[i]]['website']}">${fileData[values[i]]['name']}</a>`
-    }
-    if (i == 0){
-      output += " ← "
-    }
-    if (i == 1){
-      output += " → "
-    }
-  }  
+  let output = [`<a href = "${process.env.NEXT_PUBLIC_BASE_URL}">placeholder</a>`];
+
+  if (format == "image"){
+    output.unshift(`<a href = "${fileData[values[0]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[0]]['img']} alt = ${fileData[values[0]]['description']}/></a> ← `)
+    output.push(` → <a href = "${fileData[values[2]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[2]]['img']} alt = ${fileData[values[2]]['description']}/></a>`)
+  } else if (format == "text"){
+    output.unshift(`<a href = "${fileData[values[0]]['website']}">${fileData[values[0]]['name']}</a>  ← `)
+    output.push(` → <a href = "${fileData[values[2]]['website']}">${fileData[values[2]]['name']}</a>`)
+  } else if (format == "minimal"){
+    output.unshift(`<a href = "${fileData[values[0]]['website']}"> ← </a>`)
+    output.push(`<a href = "${fileData[values[2]]['website']}"> → </a>`)
+  }
+
   const data =  `
-  <div style = "${style}">
-    <p>part of the placeholder webring!</p>
-    ${output}
-  </div>`
-
-
+<html>
+<head>
+<meta name="color-scheme" content="light dark">
+</head>
+<style type="text/css">
+  a {
+    text-decoration: none;
+    }
+  a:visited {
+  color: inherit;
+  }
+</style>
+<body>
+  <div style = ${style}>
+    ${output.join("")}
+  </div>
+</body>
+</html>
+  `
   res.status(200).send(data);
 }

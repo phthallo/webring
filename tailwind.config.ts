@@ -12,11 +12,12 @@ export default {
         dmmono: ['DMMono', 'monospace']
       },
       colors: {
-        'text': '#050315',
-        'background': '#353535',
-        'primary': '#2f27ce',
-        'secondary': '#dedcff',
-        'accent': '#433bff',
+        'text': '#ffffff',
+        'background': '#0c0e0d',
+        'primary': '#121613',
+        'secondary': '#2c322e',
+        'accent': '#7da68a',
+        'heading': '#8eb099',
        },         
     },
   },
