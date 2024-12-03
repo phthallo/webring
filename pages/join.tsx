@@ -4,7 +4,7 @@ const Join = () => {
     return (
           <Layout title = "join">
             <p>anyone can join this webring! all you have to do is submit a pull request to the repository and add yourself to /public/members.json</p>
-            <p>the body of the request should contain the following information: </p>
+            <p>the body should contain the following information: </p>
             <ul>
                 <li><b>name</b> [String] = a username or other name used to refer to you</li>
                 <li><b>website</b> [String] = link to your personal website</li>
