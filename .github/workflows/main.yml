@@ -1,6 +1,7 @@
 name: 'nest-deploy'
 on: 
-  push
+ workflow_dispatch:
+ push:
 
 jobs: 
   nest-deploy:
