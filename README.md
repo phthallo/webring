@@ -22,11 +22,9 @@ git clone https://github.com/phthallo/webring && cd webring
 bun install
 ```
 
-3. Set environment variables. 
+3. In the root of the directory, set your environment variables in a `.env` file. 
 
 ```
-.env 
----
 NEXT_PUBLIC_INTERNAL_URL=
 NEXT_PUBLIC_BASE_URL=
 ```
