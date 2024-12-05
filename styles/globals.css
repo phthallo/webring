@@ -30,8 +30,12 @@
     @apply text-lg sm:text-xl mb-6 text-white bg-secondary 
   }
 
+  p > a, ul > a {
+    @apply underline hover:text-accent 
+  }
+
   a {
-    @apply text-gray-50 hover:text-accent
+    @apply hover:text-accent
   }
 
   i {

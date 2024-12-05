@@ -14,6 +14,7 @@ const Join = () => {
             <p>Once that's deployed, search for your id on the <a href = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/members`}>/api/members</a> endpoint.</p>
             <p>You can then add the webring badge to your website with an iframe (replace [bracketed stuff] with actual information) e.g</p>
             <p className = "text-center">&lt;iframe src = &quot;{process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/[id]?format=[format]&amp;style=[style]&quot;/&gt;</p>
+            <p>You can preview the three provided webring badge formats by scrolling to the bottom of the <a href = "/docs">API documentation</a> page. Feel free to make your own!</p>
           </Layout>
     );
   }

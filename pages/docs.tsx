@@ -1,34 +1,49 @@
 import Layout from "../components/Layout";
+import Documentation from "../components/Documentation";
+
+const defaultDef = () => {
+    return (
+    <p className = "pl-4">&#123;"name": Name of the user,<br/>"website": Link to the website,<br/>"description": Short description of the user,<br/>"img": Base-64 encoded 88x31 image.&#125;<br/>&#125;</p>
+)}
+
+const docsArray = [
+    {
+        "heading": "GET /api/members",
+        "description": "Returns a JSON object containing every member of the webring.",
+        "useDefault": false
+    },
+    { 
+        "heading": "GET /api/members/[member]",
+        "description": "Returns a JSON object containing the information of one member of the webring, where [member] is an integer.",
+        "useDefault": true
+    },
+    { 
+        "heading": "GET /api/members/[member]/next",
+        "description": 'Returns a JSON object containing the information of the next member of the webring from the specified member ID, where [member] is an integer.',
+        "useDefault": true
+    },
+    { 
+        "heading": "GET /api/members/[member]/previous",
+        "description": 'Returns a JSON object containing the information of the previous member of the webring from the specified member ID, where [member] is an integer.',
+        "useDefault": true
+
+    },
+    { 
+        "heading": "GET /api/widgets/[member]?format=[format]&style=[style]",
+        "description": 'Returns HTML for a webring navigation widget where [member] is a member ID, [format] is one of minimal, text or image, and [style] are inline styles used to style the widget content.',
+        "useDefault": false
+    },
+]
+
+
 const Docs = () =>{
     return (
         <Layout heading = "api documentation" title = "api docs">
-            <p className = "bg-black/50 h-max">GET /api/members</p>
-            <p>Returns a JSON object containing every member of the webring, in the following format:</p>
-            <p className = "pl-4">
-                &#123;"id": <br/></p>
-                <p className = "pl-8">
-                &#123;"name": Name of the user,<br/>
-                "website": Link to the website,<br/>
-                "description": Short description of the user,<br/>
-                "img": Base-64 encoded 88x31 image.&#125;,...&#125;</p>
+            {docsArray.map(i => <Documentation heading = {i.heading} description = {i.description}>{i.useDefault ? defaultDef() : null}</Documentation>)}
+            <iframe className="w-full h-20" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=minimal&style=text-align:center;`}></iframe>
+            <iframe className="w-full h-20" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=text&style=text-align:center;`}></iframe>
+            <iframe className="w-full h-20" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=image&style=text-align:center;`}></iframe>
 
-
-                <p className = "bg-black/50 h-max">GET /api/members/[:member]</p>
-            <p>Returns a JSON object containing the information of one member of the webring, where [:member] is an integer.</p>
-            <p className = "pl-4">
-                &#123;"name": Name of the user,<br/>
-                "website": Link to the website,<br/>
-                "description": Short description of the user,<br/>
-                "img": Base-64 encoded 88x31 image.&#125;<br/>
-                &#125;</p>
-
-            <p className = "bg-black/50 h-max">GET /api/widgets/[:member]?format=[:format]&style=[:style]</p>
-            <p>Returns HTML for a webring navigation widget where:</p>
-            <ul>
-                <li>format (required) is one of <b>text</b> (names), <b>image</b> (88x31 images), <b>minimal</b> (arrows)</li>
-                <li>style (optional) contains inline styles to style the returned elements</li>
-            </ul>
-            <p>Each widget links to the previous member, the main webring page, and the next member in the selected format.</p>
         </Layout>
     )
 }

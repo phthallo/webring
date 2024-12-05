@@ -1,10 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { promises as fs } from 'fs';
-
-function getVal(index: number, membersCount: number){
-  let iter = [...Array(membersCount).keys()]
-  return iter[(index % iter.length + iter.length) % iter.length]
-}
+import { getValues } from "../../../lib/load-members";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,19 +12,19 @@ export default async function handler(
   let { member, style, format }  = req.query;
   let length = Object.keys(fileData).length;
   let mem = Number(member);
-  let values = [getVal(mem-1, length), getVal(mem, length), getVal(mem+1, length)] // get values circular-ly
+  let values = [getValues(mem-1, length), getValues(mem, length), getValues(mem+1, length)] // get values circular-ly
   if (!style){ style = "" };
   let output = [`<a href = "${process.env.BASE_URL}">placeholder</a>`];
 
   if (format == "image"){
-    output.unshift(`<a href = "${fileData[values[0]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[0]]['img']} alt = ${fileData[values[0]]['description']}/></a> ← `)
-    output.push(` → <a href = "${fileData[values[2]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[2]]['img']} alt = ${fileData[values[2]]['description']}/></a>`)
+    output.unshift(`<a target="_blank" rel="noopener" href = "${fileData[values[0]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[0]]['img']} alt = ${fileData[values[0]]['description']}/></a> ← `)
+    output.push(` → <a target="_blank" rel="noopener" href = "${fileData[values[2]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[2]]['img']} alt = ${fileData[values[2]]['description']}/></a>`)
   } else if (format == "text"){
-    output.unshift(`<a href = "${fileData[values[0]]['website']}">${fileData[values[0]]['name']}</a>  ← `)
-    output.push(` → <a href = "${fileData[values[2]]['website']}">${fileData[values[2]]['name']}</a>`)
+    output.unshift(`<a target="_blank" rel="noopener" href = "${fileData[values[0]]['website']}">${fileData[values[0]]['name']}</a>  ← `)
+    output.push(` → <a target="_blank" rel="noopener" href = "${fileData[values[2]]['website']}">${fileData[values[2]]['name']}</a>`)
   } else if (format == "minimal"){
-    output.unshift(`<a href = "${fileData[values[0]]['website']}"> ← </a>`)
-    output.push(`<a href = "${fileData[values[2]]['website']}"> → </a>`)
+    output.unshift(`<a target="_blank" rel="noopener" href = "${fileData[values[0]]['website']}"> ← </a>`)
+    output.push(`<a target="_blank" rel="noopener" href = "${fileData[values[2]]['website']}"> → </a>`)
   }
 
   const data =  `
@@ -40,8 +36,8 @@ export default async function handler(
   a {
     text-decoration: none;
     }
-  a:visited {
-  color: inherit;
+  a, a:visited {
+    color: inherit;
   }
 </style>
 <body>
