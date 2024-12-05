@@ -1,10 +1,14 @@
 # webring
 
-[Webring](https://webring.phthallo.com) is a website for a currently unnamed webring created with Next.js, React and TailwindCSS.
+[Webring](https://webring.phthallo.com) is a website for a currently unnamed [webring](https://webring.phthallo.com/about) created with Next.js, React and TailwindCSS.
+
+![image](https://github.com/user-attachments/assets/7cc408a9-3e33-4679-908d-b78f0991835a)
+
+
 
 ## Joining
 To join the webring, add yourself to `/lib/members.json` and open a pull request - anyone is welcome! I'll review your pull request as soon as I can. 
-See more information about what's required and adding the webring navigation widget at [`/join`](https://webring.phthallo.com/join)
+See more information about what's required and adding the webring navigation widget to your website at [`/join`](https://webring.phthallo.com/join)
 
 ## API
 There is an API accessible should you wish to style or otherwise represent the members of the webring in a different way. Documentation can be found at [`/docs`](https://webring.phthallo.com/docs) 
@@ -41,6 +45,6 @@ bun run dev
 4. Build and start the production server.
 ```
 bun run build
-bun start
+bun run start
 ```
 
