@@ -11,8 +11,8 @@ const Join = () => {
                 <li><b>description</b> [String] = short description of you and your website</li>
                 <li><b>img</b> [String] = base64 encoded 88x31 badge. here's a <a href = "https://hekate2.github.io/buttonmaker/">generator</a> if you don't already have one!</li>
             </ul>
-            <p>once that's deployed, search for your id on the <a href = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/members`}>/api/members</a> endpoint.</p>
-            <p>you can then add the webring badge to your website with an iframe (replace [bracketed stuff] with actual information) e.g</p>
+            <p>Once that's deployed, search for your id on the <a href = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/members`}>/api/members</a> endpoint.</p>
+            <p>You can then add the webring badge to your website with an iframe (replace [bracketed stuff] with actual information) e.g</p>
             <p className = "text-center">&lt;iframe src = &quot;{process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/[id]?format=[format]&amp;style=[style]&quot;/&gt;</p>
           </Layout>
     );
