@@ -39,6 +39,7 @@ export default async function handler(
   a, a:visited {
     color: inherit;
   }
+
 </style>
 <body>
   <div style = ${style}>
