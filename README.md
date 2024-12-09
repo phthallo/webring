@@ -2,7 +2,8 @@
 
 [Webring](https://webring.phthallo.com) is a responsive, mobile friendly website and central hub for a currently unnamed [webring](https://webring.phthallo.com/about) created with Next.js, React and TailwindCSS.
 
-![image](https://github.com/user-attachments/assets/7cc408a9-3e33-4679-908d-b78f0991835a)
+![final](https://github.com/user-attachments/assets/8d22cdcc-a6ee-400a-b86c-ff239e2b1565)
+
 
 ### What's a webring?
 Webrings link websites that are similar in some way together in a circular structure, allowing you to easily find other interesting blogs and portfolios.
@@ -19,7 +20,7 @@ There is an API accessible should you wish to style or otherwise represent the m
 | route | description |
 | ----- | ----------- |
 | `/api/members` | Retrieve a list of all members and their respective information. |
-| `/api/members/[id]/` | Retrieve the information of the webring member corresponding to the specified ID | 
+| `/api/members/[id]` | Retrieve the information of the webring member corresponding to the specified ID | 
 | `/api/members/[id]/next` | Retrieve the information of the next webring member from the specified ID | 
 | `/api/members/[id]/previous` | Retrieve the information of the previous webring member from the specified ID | 
 | `/api/widgets/[member]?format=[format]&style=[style]` | Generate a webring widget for the member of specified ID with mandatory parameter [format] and optional parameter [style] | 
