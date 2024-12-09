@@ -1,9 +1,12 @@
 # webring
 
-[Webring](https://webring.phthallo.com) is a website for a currently unnamed [webring](https://webring.phthallo.com/about) created with Next.js, React and TailwindCSS.
+[Webring](https://webring.phthallo.com) is a responsive, mobile friendly website and central hub for a currently unnamed [webring](https://webring.phthallo.com/about) created with Next.js, React and TailwindCSS.
 
 ![image](https://github.com/user-attachments/assets/7cc408a9-3e33-4679-908d-b78f0991835a)
 
+### What's a webring?
+Webrings link websites that are similar in some way together in a circular structure, allowing you to easily find other interesting blogs and portfolios.
+[Read more](https://fanlore.org/wiki/Webring)
 
 
 ## Joining
@@ -11,7 +14,17 @@ To join the webring, add yourself to `/lib/members.json` and open a pull request
 See more information about what's required and adding the webring navigation widget to your website at [`/join`](https://webring.phthallo.com/join)
 
 ## API
-There is an API accessible should you wish to style or otherwise represent the members of the webring in a different way. Documentation can be found at [`/docs`](https://webring.phthallo.com/docs) 
+There is an API accessible should you wish to style or otherwise represent the members of the webring in a different way. 
+
+| route | description |
+| ----- | ----------- |
+| `/api/members` | Retrieve a list of all members and their respective information. |
+| `/api/members/[id]/` | Retrieve the information of the webring member corresponding to the specified ID | 
+| `/api/members/[id]/next` | Retrieve the information of the next webring member from the specified ID | 
+| `/api/members/[id]/previous` | Retrieve the information of the previous webring member from the specified ID | 
+| `/api/widgets/[member]?format=[format]&style=[style]` | Generate a webring widget for the member of specified ID with mandatory parameter [format] and optional parameter [style] | 
+
+Further documentation can be found at [`/docs`](https://webring.phthallo.com/docs) 
 
 ## Development
 1. Clone the repository
