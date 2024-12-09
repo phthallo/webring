@@ -39,7 +39,11 @@
   }
 
   i {
-    @apply px-2
+    @apply px-2 text-flavour
+  }
+
+  svg {
+    @apply text-flavour
   }
 
   li {
