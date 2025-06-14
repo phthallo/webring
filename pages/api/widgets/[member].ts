@@ -31,6 +31,7 @@ export default async function handler(
 <html>
 <head>
 <meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <style type="text/css">
   a {
