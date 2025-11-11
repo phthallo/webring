@@ -14,17 +14,29 @@ export default async function handler(
   let mem = Number(member);
   let values = [getValues(mem-1, length), getValues(mem, length), getValues(mem+1, length)] // get values circular-ly
   if (!style){ style = "" };
-  let output = [`<a href = "${process.env.BASE_URL}">placeholder</a>`];
+
+  const esc = (v: any) => {
+    if (v === undefined || v === null) 
+      return "";
+    return String(v)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  let output = [`<a href="${esc(process.env.BASE_URL)}">placeholder</a>`];
 
   if (format == "image"){
-    output.unshift(`<a target="_blank" rel="noopener" href = "${fileData[values[0]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[0]]['img']} alt = ${fileData[values[0]]['description']}/></a> ← `)
-    output.push(` → <a target="_blank" rel="noopener" href = "${fileData[values[2]]['website']}"><img style = "vertical-align:middle" src = ${fileData[values[2]]['img']} alt = ${fileData[values[2]]['description']}/></a>`)
+    output.unshift(`<a target="_blank" rel="noopener" href="${esc(fileData[values[0]]['website'])}"><img style="vertical-align:middle" src="${esc(fileData[values[0]]['img'])}" alt="${esc(fileData[values[0]]['description'])}"/></a> ← `)
+    output.push(` → <a target="_blank" rel="noopener" href="${esc(fileData[values[2]]['website'])}"><img style="vertical-align:middle" src="${esc(fileData[values[2]]['img'])}" alt="${esc(fileData[values[2]]['description'])}"/></a>`)
   } else if (format == "text"){
-    output.unshift(`<a target="_blank" rel="noopener" href = "${fileData[values[0]]['website']}">${fileData[values[0]]['name']}</a>  ← `)
-    output.push(` → <a target="_blank" rel="noopener" href = "${fileData[values[2]]['website']}">${fileData[values[2]]['name']}</a>`)
+    output.unshift(`<a target="_blank" rel="noopener" href="${esc(fileData[values[0]]['website'])}">${esc(fileData[values[0]]['name'])}</a>  ← `)
+    output.push(` → <a target="_blank" rel="noopener" href="${esc(fileData[values[2]]['website'])}">${esc(fileData[values[2]]['name'])}</a>`)
   } else if (format == "minimal"){
-    output.unshift(`<a target="_blank" rel="noopener" href = "${fileData[values[0]]['website']}"> ← </a>`)
-    output.push(`<a target="_blank" rel="noopener" href = "${fileData[values[2]]['website']}"> → </a>`)
+    output.unshift(`<a target="_blank" rel="noopener" href="${esc(fileData[values[0]]['website'])}"> ← </a>`)
+    output.push(`<a target="_blank" rel="noopener" href="${esc(fileData[values[2]]['website'])}"> → </a>`)
   }
 
   const data =  `
@@ -42,12 +54,12 @@ export default async function handler(
   }
 
 </style>
-<body>
-  <div style = ${style}>
+</body>
+  <div style="${esc(style)}">
     ${output.join("")}
   </div>
 </body>
-</html>
-  `
+</html>  `
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.status(200).send(data);
 }
