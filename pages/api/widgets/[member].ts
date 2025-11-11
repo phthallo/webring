@@ -26,7 +26,7 @@ export default async function handler(
       .replace(/'/g, '&#39;');
   }
 
-  let output = [`<a href="${esc(process.env.BASE_URL)}">placeholder</a>`];
+  let output = [`<a target="_blank" rel="noopener" href="${esc(process.env.BASE_URL)}">placeholder</a>`];
 
   if (format == "image"){
     output.unshift(`<a target="_blank" rel="noopener" href="${esc(fileData[values[0]]['website'])}"><img style="vertical-align:middle" src="${esc(fileData[values[0]]['img'])}" alt="${esc(fileData[values[0]]['description'])}"/></a> ← `)
