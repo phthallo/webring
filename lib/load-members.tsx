@@ -2,7 +2,7 @@ import { readdir } from "node:fs/promises";
 import path from 'path';
 import yaml from "yaml"
 
-const libDir = path.join(process.cwd(), 'lib');
+const libDir = path.join(process.cwd(), 'members');
 
 
 let yamlFilesCache: string[] | null = null;
@@ -33,15 +33,9 @@ export async function loadMembersData(): Promise<any[]> {
     const members = await Promise.all(
         yamlList.map(async (file) => {
             const filePath = path.join(libDir, file);
-            try {
-                const text = await Bun.file(filePath).text();
-                return yaml.parse(text);
-            } catch (e) {
-                // skip
-                return undefined;
-            }
-        })
-    );
+            const text = await Bun.file(filePath).text();
+            return yaml.parse(text);
+        }))
     const filtered = members.filter(Boolean);
     membersDataCache = filtered;
     return filtered;

@@ -18,6 +18,7 @@ export default {
         'secondary': '#989719',
         'accent': '#458588',
         'flavour': '#fff',
+        'spice': '#83A598',
         'heading': '#8bd5ca',
        },         
     },

@@ -14,7 +14,7 @@
         src: url("../public/DM_Mono/DMMono-Regular.ttf") format("truetype");
   }
   html {
-    @apply bg-background selection:bg-secondary selection:text-text
+    @apply bg-background selection:bg-spice selection:text-primary
   }
 
 }
@@ -141,18 +141,25 @@
     pointer-events: none;
     animation: flicker 0.15s infinite;
   }
-  
+
   .crt {
     animation: textShadow 1.6s infinite;
   }
-
 
   p, div, span {
     @apply font-dmmono text-text text-sm sm:text-base
   }
 
   h1 {
+    @apply text-lg sm:text-7xl mb-6 text-white
+  }
+
+  h2 {
     @apply text-lg sm:text-xl mb-6 text-white bg-secondary 
+  }
+
+  h3 { 
+    @apply text-lg sm:text-xl my-3 text-secondary
   }
 
   p > a, ul > a {
@@ -160,7 +167,7 @@
   }
 
   a {
-    @apply hover:text-accent
+    @apply underline decoration-wavy underline-offset-4 hover:text-accent
   }
 
   i {
