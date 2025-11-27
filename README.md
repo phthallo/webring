@@ -20,10 +20,10 @@ There is an API accessible should you wish to style or otherwise represent the m
 | route | description |
 | ----- | ----------- |
 | `/api/members` | Retrieve a list of all members and their respective information. |
-| `/api/members/[id]` | Retrieve the information of the webring member corresponding to the specified ID | 
-| `/api/members/[id]/next` | Retrieve the information of the next webring member from the specified ID | 
-| `/api/members/[id]/previous` | Retrieve the information of the previous webring member from the specified ID | 
-| `/api/widgets/[member]?format=[format]&style=[style]` | Generate a webring widget for the member of specified ID with mandatory parameter [format] and optional parameter [style] | 
+| `/api/members/[name]` | Retrieve the information of the webring member corresponding to the specified name | 
+| `/api/members/[name]/next` | Retrieve the information of the next webring member from the specified name | 
+| `/api/members/[name]/previous` | Retrieve the information of the previous webring member from the specified name | 
+| `/api/widgets/[member]?format=[format]&style=[style]` | Generate a webring widget for the member of specified name with mandatory parameter [format] and optional parameter [style] | 
 
 Further documentation can be found at [`/docs`](https://webring.phthallo.com/docs) 
 

@@ -1,14 +1,15 @@
 
 export interface CardProps {
+    key: number,
     name: String,
-    description: String
-    website: String
-    img: String
+    description: String,
+    website: String,
+    img: String,
 }
 
-const Card = ({name, description, website, img}: CardProps) => 
+const Card = ({key, name, description, website, img}: CardProps) => 
     (
-        <div className="my-6">
+        <div key = {key} className="my-6">
             <span className = "mr-3">
             <a href = {`${website}`}><img className="inline" src = {`${img}`}></img></a> •
             </span>
