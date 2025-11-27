@@ -1,17 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { promises as fs } from 'fs';
-
-type Data = {
-  response: string;
-};
+import { loadSpecificMember } from "@/lib/load-members";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>,
+  res: NextApiResponse,
 ) {
-
-  const file = await fs.readFile(process.cwd() + '/lib/members.json', 'utf8');
-  const fileData = JSON.parse(file);
-  const { member }  = req.query;
-  res.status(200).json(fileData[Number(member)]);
+  const { member } = req.query as { member: string };
+  const fileData = loadSpecificMember(member);
+  res.status(200).json(fileData);
 }

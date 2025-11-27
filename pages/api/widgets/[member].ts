@@ -1,15 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { promises as fs } from 'fs';
-import { getValues } from "../../../lib/load-members";
-
+import { loadMembersData, getValues } from "@/lib/load-members";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<String>,
   ) {
 
-  const file = await fs.readFile(process.cwd() + '/lib/members.json', 'utf8');
-  const fileData = JSON.parse(file);
   let { member, style, format }  = req.query;
+  const fileData = await loadMembersData();
   let length = Object.keys(fileData).length;
   let mem = Number(member);
   let values = [getValues(mem-1, length), getValues(mem, length), getValues(mem+1, length)] // get values circular-ly

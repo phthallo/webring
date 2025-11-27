@@ -43,6 +43,7 @@ const Docs = () =>{
             <iframe className="w-full h-20" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=minimal&style=text-align:center;font-family:monospace`}></iframe>
             <iframe className="w-full h-20" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=text&style=text-align:center;font-family:monospace`}></iframe>
             <iframe className="w-full h-20" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=image&style=text-align:center;font-family:monospace`}></iframe>
+            <iframe className="w-full h-20" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/members/phthallo`}></iframe>
 
         </Layout>
     )
