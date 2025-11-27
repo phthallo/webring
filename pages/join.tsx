@@ -15,8 +15,8 @@ const Join = ({previous, next}: {previous: any, next: any}) => {
             </ul>
 
             <p>Once your PR is merged, add the webring badge to your website with an iframe e.g</p>
-            <p className = "text-center">&lt;iframe src = &quot;{process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/yourname?format=[format]&amp;style=[style]&quot;/&gt;</p>
-            
+            <p className = "text-center">&lt;iframe height = "40" width="100%" src = &quot;{process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/yourname?format=[format]&amp;style=[style]&quot;/&gt;</p>
+
             <h3>Styling</h3>
             <p>Three options are provided by default - replace [format] with one of minimal, text or image.</p>
             
@@ -25,7 +25,7 @@ const Join = ({previous, next}: {previous: any, next: any}) => {
             <iframe className="w-full h-20" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=image&style=text-align:center;font-family:monospace`}></iframe>
 
 
-            <p>However, there are additional endpoints which allow extra customisation, if you want to make it fit in with your website more. See the <a href = "/docs">API docs</a> for more.</p>
+            <p>However, there are additional endpoints which allow extra customisation, if you want to make it fit in with your website more - I strongly recommend you do this. See the <a href = "/docs">API docs</a> for more.</p>
             <div className = "mt-4 border border-white/20 p-4 flex flex-col items-center">
             <p>part of the <a href = "https://webring.phthallo.com">placeholder</a> webring</p>
             <div className = "flex flex-row justify-between w-full">

@@ -166,6 +166,10 @@
     @apply underline hover:text-accent 
   }
 
+  b {
+    @apply text-secondary
+  }
+
   a {
     @apply underline decoration-wavy underline-offset-4 hover:text-accent
   }

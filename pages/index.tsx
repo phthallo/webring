@@ -7,8 +7,9 @@ const Home: React.FC<CardProps[]> = (members) => {
         <Layout heading = "webring members" title="home">
             <h3>Members</h3>
 
-            {Object.values(members).map((prop) => (
+            {Object.values(members).map((prop, index) => (
               <Card 
+                key = {index}
                 name = {prop.name} 
                 description = {prop.description}
                 website = {prop.website}

@@ -30,7 +30,7 @@ const Layout = ({children, heading, title}: LayoutProps) => {
               <p className = "text-left text-white">a webring :)</p>
               </a>
               <div className = "absolute inset-x-3 bottom-3">
-                <iframe className="w-full hidden md:visible md:inline h-16 " allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=minimal&style=text-align:center;font-family:monospace;padding:0.75rem;width:max-content;margin:auto;`}></iframe>
+                <iframe className="w-full hidden md:visible md:inline h-16" allow-transparency="true" src = {`${process.env.NEXT_PUBLIC_BASE_URL}/api/widgets/0?format=minimal&style=text-align:center;font-family:monospace;padding:0.75rem;width:max-content;margin:auto;`}></iframe>
               </div>
               </div>
             </div>

@@ -7,6 +7,7 @@ const libDir = path.join(process.cwd(), 'members');
 
 let yamlFilesCache: string[] | null = null;
 let membersDataCache: any[] | null = null;
+const blankMember = {name: undefined, website: undefined, description: undefined, img: undefined}
 
 async function getYamlFiles(): Promise<string[]> {
     if (yamlFilesCache) {
@@ -33,12 +34,15 @@ export async function loadMembersData(): Promise<any[]> {
     const members = await Promise.all(
         yamlList.map(async (file) => {
             const filePath = path.join(libDir, file);
-            const text = await Bun.file(filePath).text();
-            return yaml.parse(text);
+            try {
+                const text = await Bun.file(filePath).text();
+                return yaml.parse(text);
+            } catch {
+                return blankMember
+            }
         }))
-    const filtered = members.filter(Boolean);
-    membersDataCache = filtered;
-    return filtered;
+    membersDataCache = members;
+    return members;
 }
 
 
@@ -48,7 +52,7 @@ export async function loadSpecificMember(member: string): Promise<any> {
         const text = await Bun.file(filePath).text();
         return yaml.parse(text);
     } catch {
-        return ""
+        return blankMember
     }
 }
 
@@ -56,8 +60,12 @@ export async function loadSpecificMember(member: string): Promise<any> {
 export async function loadMemberOffset(member: string, offset: number): Promise<any> {
     const allMembers = await loadMembers();
     const memberIndex = allMembers.indexOf(member);
-    const offsettedMember = allMembers[getValues(memberIndex + offset, allMembers.length)];
-    return loadSpecificMember(offsettedMember);
+    if (memberIndex != -1) {
+        const offsettedMember = allMembers[getValues(memberIndex + offset, allMembers.length)];
+        return loadSpecificMember(offsettedMember);
+    } else {
+        return blankMember
+    }
 }
 
 
